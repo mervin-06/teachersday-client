@@ -15,7 +15,6 @@ function Hero() {
         <p className="hero-description">A special celebration to honour our teachers with talent, entertainment, joy, and unforgettable memories.</p>
         <div className="hero-buttons">
           <button type="button" className="student-btn" onClick={() => scrollToSection("student-register")}>🎓 Join as Student</button>
-          <button type="button" className="staff-btn" onClick={() => scrollToSection("staff-register")}>👩‍🏫 Join as Staff</button>
         </div>
         <p className="hero-note">✨ Everyone is welcome to participate!</p>
       </div>

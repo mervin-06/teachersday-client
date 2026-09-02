@@ -3,7 +3,6 @@ import AboutCelebration from "./components/AboutCelebration";
 import Events from "./components/Events";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
-import StaffRegistration from "./components/StaffRegistration";
 import StudentRegistration from "./components/StudentRegistration";
 
 function App() {
@@ -12,8 +11,7 @@ function App() {
       <Hero />
       <AboutCelebration />
       <Events />
-      <StudentRegistration />
-      <StaffRegistration />
+      <StudentRegistration/>
       <Footer />
     </main>
   );
