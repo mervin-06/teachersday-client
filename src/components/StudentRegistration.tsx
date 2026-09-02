@@ -22,21 +22,56 @@ function StudentRegistration() {
 
     setIsSubmitting(true);
     setStatus(null);
+
     const payload = {
       ...studentForm,
       teamMembers: studentForm.teamMembers.map((member) => member.trim()).filter(Boolean),
       teamName: studentForm.participationType === "Team" ? studentForm.teamName.trim() : "",
     };
 
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), 20000);
+
     try {
-      const response = await fetch(studentEndpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
-      const result: { success: boolean; message: string } = await response.json();
-      if (!response.ok) throw new Error(result.message || "Unable to complete registration. Please try again.");
+      const response = await fetch(studentEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        signal: controller.signal,
+      });
+
+      const responseText = await response.text();
+      let result: { success?: boolean; message?: string } = {};
+
+      if (responseText) {
+        try {
+          result = JSON.parse(responseText);
+        } catch {
+          result = { message: responseText || "Unable to complete registration. Please try again." };
+        }
+      }
+
+      if (!response.ok) {
+        throw new Error(result.message || "Unable to complete registration. Please try again.");
+      }
+
+      if (!result.success) {
+        throw new Error(result.message || "Registration failed. Please try again.");
+      }
+
       setSuccessfulRegistration({ name: payload.name, isTeam: payload.participationType === "Team" });
       setStudentForm(initialForm);
+      setStatus({ type: "success", message: result.message || "Registration successful." });
     } catch (error) {
-      setStatus({ type: "error", message: error instanceof Error ? error.message : "Unable to complete registration. Please try again." });
+      if (error instanceof Error && error.name === "AbortError") {
+        setStatus({ type: "error", message: "The registration request took too long. Please try again." });
+      } else if (error instanceof TypeError) {
+        setStatus({ type: "error", message: "Network error. Please check your connection and try again." });
+      } else {
+        setStatus({ type: "error", message: error instanceof Error ? error.message : "Unable to complete registration. Please try again." });
+      }
     } finally {
+      window.clearTimeout(timeoutId);
       setIsSubmitting(false);
     }
   };
