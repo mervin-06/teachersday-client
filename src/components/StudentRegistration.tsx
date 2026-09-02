@@ -3,7 +3,7 @@ import type { FormEvent } from "react";
 import RegistrationSuccessModal from "./RegistrationSuccessModal";
 import "../styles/StudentRegistration.css";
 
-const studentEndpoint = "http://localhost:5000/api/register/student";
+const studentEndpoint = "https://teachers-server-a6ul.onrender.com/api/register/student";
 type ParticipationType = "Individual" | "Team";
 type StudentForm = { name: string; sprNo: string; department: string; year: string; phone: string; event: string; participationType: ParticipationType; teamName: string; teamMembers: string[] };
 const initialForm: StudentForm = { name: "", sprNo: "", department: "", year: "", phone: "", event: "", participationType: "Individual", teamName: "", teamMembers: [""] };
