@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-body { font-family: "Poppins", sans-serif; background: #fffaf5; color: #1f1f1f; }
+body { font-family: "Space Grotesk", sans-serif; background: #f7fafc; color: #18323f; }

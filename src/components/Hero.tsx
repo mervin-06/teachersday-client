@@ -10,15 +10,15 @@ function Hero() {
       <div className="hero-shape shape-1" />
       <div className="hero-shape shape-2" />
       <div className="hero-content">
-        <p className="hero-tag">🎓 TEACHER'S DAY CELEBRATION</p>
-        <h1>Celebrating Those Who<span> Inspire Our Future</span></h1>
-        <p className="hero-description">A special celebration to honour our teachers with talent, entertainment, joy, and unforgettable memories.</p>
+        <p className="hero-tag">⚙ ENGINEER&apos;S DAY COMPETITION</p>
+        <h1>Think. Build.<span>Compete.</span></h1>
+        <p className="hero-description">A college-wide engineering showdown for problem solvers, creators, and designers ready to turn ideas into impact.</p>
         <div className="hero-buttons">
           <button type="button" className="student-btn" onClick={() => scrollToSection("student-register")}>🎓 Join as Student</button>
         </div>
-        <p className="hero-note">✨ Everyone is welcome to participate!</p>
+        <p className="hero-note">⌁ Four competitions · One registration</p>
       </div>
-      <div className="hero-visual"><div className="teacher-circle">🧑‍🏫</div></div>
+      <div className="hero-visual"><div className="engineer-circle">&lt;/&gt;</div></div>
     </section>
   );
 }
